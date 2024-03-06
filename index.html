@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Move Button</title>
+<style>
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  button {
+    cursor: pointer;
+    padding: .3rem .5rem;
+  }
+  .gay {
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+  }
+  .buttons {
+    display: inline-flex;
+    position: relative;
+  }
+  #moveButton {
+    position: absolute;
+    margin-left: 60px;
+  }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Are you gay?</h1>
+        <div class="buttons">
+            <button class="gay" onclick={handleYes()}>Yes</button>
+            <button id="moveButton">NO</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('moveButton').addEventListener('mouseover', function() {
+            const container = document.querySelector('.container');
+            const maxX = container.clientWidth - this.offsetWidth;
+            const maxY = container.clientHeight - this.offsetHeight;
+            const randomX = (Math.random() * maxX) / 5;
+            const randomY = (Math.random() * maxY) / 5;
+            this.style.left = randomX + 'px';
+            this.style.top = randomY + 'px';
+        });
+        const handleYes = () => {
+            alert('Me too!');
+        };
+    </script>
+
+</body>
+</html>
